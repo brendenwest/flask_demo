@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+    .flex-container {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .flex-container > form {
+      background-color: #f1f1f1;
+      margin-right: 10px;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<h1>{{ greeting }}!</h1>
+<br>How may I help you?
+<hr>
+<div class="flex-container">
+    <form>
+        <input type="text" id="entry">
+    </form>
+    <button onclick="postMessage()">??</button>
+</div>
+<hr>
+<div id="response"></div>
+
+<script>
+    const postMessage = () => {
+        const entry = document.getElementById("entry").value
+        fetch("/predict", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({"entry": entry})
+         })
+         .then(res => res.json())
+        .then((data) => {
+            document.getElementById("response").innerText = data['response']
+        });
+    }
+</script>
+</body>
+</html>
