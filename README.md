@@ -5,6 +5,11 @@ Demonstrates running Flask web server in Docker.
 #### Requirements
 -  [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
+#### Running
+
+- Run `docker compose up`
+- Navigate to http://localhost:5000
+
 #### Notes
 
 - docker-compose is optional but simplifies steps to build & run container
